@@ -1,249 +1,154 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王鑫宇 | 个人简历</title>
+    <title>王鑫宇 | 会展经济与管理</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'] },
+                    colors: {
+                        accent: '#5B7A99', 
+                        dark: '#111111',
+                        gray: { 100: '#F5F5F5', 200: '#E5E5E5', 400: '#A3A3A3', 600: '#525252' }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --color-bg: #ffffff;
-            --color-text-primary: #111111;
-            --color-text-secondary: #666666;
-            --color-accent: #4a6fa5; 
-            --color-border: #e5e5e5;
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-            
-            --space-xs: 8px;
-            --space-sm: 16px;
-            --space-md: 32px;
-            --space-lg: 64px;
-            --space-xl: 120px;
-            --container-width: 960px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; scroll-behavior: smooth; }
-        
-        body {
-            font-family: var(--font-main);
-            background-color: var(--color-bg);
-            color: var(--color-text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
-        a:hover { color: var(--color-accent); }
-
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        section { padding: var(--space-xl) 0; }
-
-        header {
-            padding: var(--space-md) 0;
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid transparent;
-        }
-        header.scrolled { border-bottom-color: var(--color-border); }
-
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: -0.02em; }
-        .nav-links { display: flex; gap: var(--space-md); font-size: 0.9rem; }
-        .nav-links a { color: var(--color-text-secondary); }
-
-        .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding-top: var(--space-xl); }
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: var(--space-md);
-        }
-        .hero p { font-size: 1.25rem; color: var(--color-text-secondary); max-width: 500px; font-weight: 300; }
-        .accent-dot { color: var(--color-accent); }
-
-        .section-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-accent);
-            font-weight: 600;
-            margin-bottom: var(--space-lg);
-            display: block;
-        }
-
-        .edu-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: var(--space-md);
-            padding-bottom: var(--space-lg);
-        }
-        .t-date {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-            font-variant-numeric: tabular-nums;
-            text-align: right;
-            padding-right: var(--space-md);
-        }
-        .t-content h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: var(--space-xs); }
-        .t-content .role { color: var(--color-accent); font-size: 0.9rem; font-weight: 500; margin-bottom: var(--space-sm); display: block; }
-
-        .practice-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: var(--space-md);
-        }
-        .practice-card {
-            border: 1px solid var(--color-border);
-            padding: var(--space-md);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .practice-card:hover {
-            transform: scale(1.02);
-            border-color: var(--color-accent);
-        }
-        .practice-card h4 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
-        .practice-card p { font-size: 0.9rem; color: var(--color-text-secondary); }
-
-        .skills-wrap { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
-        .skill-tag {
-            padding: 12px 24px;
-            border: 1px solid var(--color-border);
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-            transition: all 0.3s;
-        }
-        .skill-tag:hover { color: var(--color-accent); border-color: var(--color-accent); }
-        /* AI技能特殊标识 */
-        .skill-tag.ai {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            background: rgba(74, 111, 165, 0.04);
-        }
-        .skill-tag.ai:hover {
-            background: var(--color-accent);
-            color: #fff;
-        }
-
-        .contact-section { border-top: 1px solid var(--color-border); }
-        .email-link {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 500;
-            border-bottom: 2px solid var(--color-accent);
-            padding-bottom: 4px;
-        }
-        footer {
-            padding: var(--space-lg) 0;
-            font-size: 0.8rem;
-            color: var(--color-text-secondary);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        @media (max-width: 768px) {
-            :root { --space-xl: 80px; }
-            .edu-item { grid-template-columns: 1fr; gap: var(--space-xs); }
-            .t-date { text-align: left; padding-right: 0; }
-            footer { flex-direction: column; gap: var(--space-sm); }
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E5E5; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #A3A3A3; }
+        .timeline-line::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0; width: 1px; background-color: #E5E5E5; }
+        .timeline-dot::before { content: ''; position: absolute; left: -4px; top: 0.5rem; width: 9px; height: 9px; border-radius: 50%; background-color: #5B7A99; border: 2px solid #fff; }
     </style>
 </head>
-<body>
+<body class="bg-white text-dark antialiased selection:bg-accent selection:text-white">
 
-    <header id="header">
-        <div class="container">
-            <nav>
-                <div class="logo">WANG XINYU<span class="accent-dot">.</span></div>
-                <div class="nav-links">
-                    <a href="#education">教育</a>
-                    <a href="#practice">实践</a>
-                    <a href="#skills">技能</a>
-                    <a href="#contact">联系</a>
-                </div>
-            </nav>
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="text-lg font-bold tracking-tight">WXY.</span>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-accent transition-colors">关于</a>
+                <a href="#experience" class="hover:text-accent transition-colors">经历</a>
+                <a href="#skills" class="hover:text-accent transition-colors">技能</a>
+                <a href="#works" class="hover:text-accent transition-colors">作品</a>
+                <a href="#contact" class="hover:text-accent transition-colors">联系</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="hero container">
-            <h1>王鑫宇<span class="accent-dot">.</span><br>执行与策划</h1>
-            <p>成都银杏酒店管理学院在读。专注于校园活动策划与落地执行，善用AI工具提升内容生产效率。</p>
-        </section>
-
-        <section id="education" class="container">
-            <span class="section-label">教育背景</span>
-            <div class="edu-item">
-                <div class="t-date">2023 — 至今</div>
-                <div class="t-content">
-                    <h3>成都银杏酒店管理学院</h3>
-                    <span class="role">本科在读</span>
-                    <p style="color:var(--color-text-secondary); font-size:0.95rem;">系统学习酒店管理理论与实践知识，培养了对服务流程标准化和项目统筹的深刻理解。</p>
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+        
+        <!-- Hero 区域 -->
+        <section id="about" class="mb-32">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-[1.1]">
+                王鑫宇<br>
+                <span class="text-gray-400 font-light">会展经济与管理 / 文旅运营</span>
+            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+                <div class="md:col-span-2">
+                    <p class="text-xl md:text-2xl font-light leading-relaxed text-gray-600 max-w-2xl">
+                        性格踏实稳重、积极上进，拥有扎实的文旅、会展相关专业知识和一线实操经验。具备较强的执行力与团队协作意识，愿意持续深耕行业，高效完成策划、执行及文职类各项工作。
+                    </p>
+                </div>
+                <div class="space-y-4 text-sm border-l border-gray-200 pl-6">
+                    <div>
+                        <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">基本信息</p>
+                        <p class="font-medium">21岁 / 男 / 成都</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">教育背景</p>
+                        <p class="font-medium">成都银杏酒店管理学院</p>
+                        <p class="text-gray-600">会展经济与管理 · 本科</p>
+                        <p class="text-gray-600">2023.09 - 至今</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="practice" class="container">
-            <span class="section-label">校园实践</span>
-            <div class="practice-grid">
-                <div class="practice-card">
-                    <h4>校园展会策划</h4>
-                    <p>参与年度校园展会的整体方案构思。协助梳理活动流程、场地动线规划及物料清单整理，确保策划方案的可落地性。</p>
-                </div>
-                <div class="practice-card">
-                    <h4>展会现场执行</h4>
-                    <p>负责展会期间的现场协调与突发状况处理。对接参展方需求，维持现场秩序，保障活动按时间节点顺利推进。</p>
-                </div>
-                <div class="practice-card">
-                    <h4>团队协作与沟通</h4>
-                    <p>作为核心小组成员，跨部门协调志愿者分工。通过高效的信息同步机制，提升了团队在高压环境下的协作效率。</p>
+        <!-- 核心优势 -->
+        <section class="mb-32">
+            <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-12">核心优势</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                <div><h3 class="text-lg font-semibold mb-2">专业基础扎实</h3><p class="text-gray-600 leading-relaxed text-sm">系统学习文旅策划、会展活动、运营管理相关专业知识，具备完整的行业知识体系，能够快速适配活动策划、项目执行、文旅运营等相关岗位工作。</p></div>
+                <div><h3 class="text-lg font-semibold mb-2">实操经验丰富</h3><p class="text-gray-600 leading-relaxed text-sm">拥有实习及项目落地经验，熟悉活动策划、物料筹备、现场执行、数据汇总、文案撰写等全流程工作，具备独立完成基础工作任务的能力。</p></div>
+                <div><h3 class="text-lg font-semibold mb-2">综合能力突出</h3><p class="text-gray-600 leading-relaxed text-sm">具备良好的文案写作、沟通协调、团队协作及问题解决能力，做事细致严谨、执行力强，擅长对接多方人员，高效推进工作落地。</p></div>
+                <div><h3 class="text-lg font-semibold mb-2">适配性与可塑性强</h3><p class="text-gray-600 leading-relaxed text-sm">熟悉新媒体传播、文旅行业发展趋势，学习能力强，能够快速接受新工作、新技能，对待工作认真负责，抗压能力良好。</p></div>
+            </div>
+        </section>
+
+        <!-- 经历时间轴 -->
+        <section id="experience" class="mb-32">
+            <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-12">实践经历</h2>
+            <div class="space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 relative timeline-line pl-6 timeline-dot">
+                    <div class="md:col-span-3 pt-1"><span class="text-sm font-mono text-gray-400">2023.09 - 至今</span></div>
+                    <div class="md:col-span-9">
+                        <h3 class="text-xl font-semibold mb-2">校内外展会活动 · 项目执行与策划</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">完成学校组织的校内外展会活动，参与整体方案构思与实行，协助梳理活动流程及物料清单，确保项目可落地性。在实践中掌握了从前期策划到现场执行的完整闭环，提升了多方协调与突发状况处理能力。</p>
+                        <div class="flex gap-3 text-xs text-gray-400"><span>#活动策划</span><span>#物料统筹</span><span>#现场执行</span><span>#流程梳理</span></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="container">
-            <span class="section-label">专业技能</span>
-            <div class="skills-wrap">
-                <!-- AI 技能（带特殊样式） -->
-                <div class="skill-tag ai">AI 文案生成</div>
-                <div class="skill-tag ai">AI 素材制作</div>
-                <!-- 传统办公技能 -->
-                <div class="skill-tag">Microsoft Word</div>
-                <div class="skill-tag">PowerPoint 演示设计</div>
-                <div class="skill-tag">Excel 数据整理</div>
-                <div class="skill-tag">活动策划书撰写</div>
-                <div class="skill-tag">现场统筹协调</div>
-                <div class="skill-tag">文档排版规范</div>
+        <!-- 专业技能 -->
+        <section id="skills" class="mb-32">
+            <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-12">专业技能</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 border border-gray-100 hover:border-accent/30 transition-colors"><h3 class="text-sm font-bold uppercase tracking-wider mb-3 text-accent">办公技能</h3><p class="text-sm text-gray-600 leading-relaxed">熟练使用 Word 等办公软件，可独立完成文案撰写、数据统计、报表制作、工作汇报 PPT 制作。</p></div>
+                <div class="p-6 border border-gray-100 hover:border-accent/30 transition-colors"><h3 class="text-sm font-bold uppercase tracking-wider mb-3 text-accent">专业技能</h3><p class="text-sm text-gray-600 leading-relaxed">掌握活动策划、文案撰写、文旅项目分析、会展流程设计；熟悉新媒体运营基础规则，可完成推文编辑与素材整理。</p></div>
+                <div class="p-6 border border-gray-100 hover:border-accent/30 transition-colors"><h3 class="text-sm font-bold uppercase tracking-wider mb-3 text-accent">语言能力</h3><p class="text-sm text-gray-600 leading-relaxed">普通话标准，具备良好的商务沟通能力，可熟练读写专业相关文档。</p></div>
+                <div class="p-6 border border-gray-100 hover:border-accent/30 transition-colors"><h3 class="text-sm font-bold uppercase tracking-wider mb-3 text-accent">其他技能</h3><p class="text-sm text-gray-600 leading-relaxed">熟悉简单图片处理、短视频剪辑基础操作，具备基础审美与内容优化能力。</p></div>
             </div>
         </section>
 
-        <section id="contact" class="container contact-section">
-            <span class="section-label">取得联系</span>
-            <a href="mailto:3242694347@qq.com" class="email-link">3242694347@qq.com</a>
+        <!-- 作品展示（仅保留项目实操成果，单列全宽） -->
+        <section id="works" class="mb-32">
+            <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-12">作品展示</h2>
+            <div class="grid grid-cols-1 gap-8 max-w-2xl">
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/3] bg-gray-100 overflow-hidden mb-4 relative">
+                        <img 
+                            src="ijx.jpg" 
+                            alt="项目实操成果" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        >
+                    </div>
+                    <h3 class="text-lg font-medium group-hover:text-accent transition-colors">项目实操成果</h3>
+                    <p class="text-sm text-gray-400 mt-1">活动现场照片 / 项目复盘报告 / 宣传海报 / 运营数据报表</p>
+                </article>
+            </div>
         </section>
+
+        <!-- 底部联系 -->
+        <footer id="contact" class="border-t border-gray-100 pt-16 pb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">保持联系</h2>
+                    <p class="text-gray-600 max-w-md">目前开放实习/全职机会。如果您对我的经历感兴趣，或有合作意向，欢迎随时联系。</p>
+                </div>
+                <div class="flex flex-col items-start md:items-end space-y-2 text-sm">
+                    <a href="mailto:3242694347@qq.com" class="hover:text-accent transition-colors">3242694347@qq.com</a>
+                    <span class="text-gray-600">Tel: 13990075468</span>
+                    <span class="text-gray-400">所在城市：成都</span>
+                </div>
+            </div>
+            <div class="mt-16 text-xs text-gray-400 flex justify-between">
+                <span>&copy; 2026 王鑫宇. All Rights Reserved.</span>
+                <span>Designed with Swiss Style</span>
+            </div>
+        </footer>
+
     </main>
-
-    <footer class="container">
-        <div>© 2026 王鑫宇. All rights reserved.</div>
-        <div>男 · 成都银杏酒店管理学院</div>
-    </footer>
-
-    <script>
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 20);
-        });
-    </script>
 </body>
 </html>
