@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王鑫宇 | 个人简历</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text-primary: #111111;
+            --color-text-secondary: #666666;
+            --color-accent: #4a6fa5; 
+            --color-border: #e5e5e5;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+            
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 32px;
+            --space-lg: 64px;
+            --space-xl: 120px;
+            --container-width: 960px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        a:hover { color: var(--color-accent); }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        section { padding: var(--space-xl) 0; }
+
+        header {
+            padding: var(--space-md) 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid transparent;
+        }
+        header.scrolled { border-bottom-color: var(--color-border); }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: var(--space-md); font-size: 0.9rem; }
+        .nav-links a { color: var(--color-text-secondary); }
+
+        .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding-top: var(--space-xl); }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: var(--space-md);
+        }
+        .hero p { font-size: 1.25rem; color: var(--color-text-secondary); max-width: 500px; font-weight: 300; }
+        .accent-dot { color: var(--color-accent); }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            display: block;
+        }
+
+        .edu-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: var(--space-md);
+            padding-bottom: var(--space-lg);
+        }
+        .t-date {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+            padding-right: var(--space-md);
+        }
+        .t-content h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: var(--space-xs); }
+        .t-content .role { color: var(--color-accent); font-size: 0.9rem; font-weight: 500; margin-bottom: var(--space-sm); display: block; }
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+        .practice-card {
+            border: 1px solid var(--color-border);
+            padding: var(--space-md);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .practice-card:hover {
+            transform: scale(1.02);
+            border-color: var(--color-accent);
+        }
+        .practice-card h4 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+        .practice-card p { font-size: 0.9rem; color: var(--color-text-secondary); }
+
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+        .skill-tag {
+            padding: 12px 24px;
+            border: 1px solid var(--color-border);
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            transition: all 0.3s;
+        }
+        .skill-tag:hover { color: var(--color-accent); border-color: var(--color-accent); }
+        /* AI技能特殊标识 */
+        .skill-tag.ai {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: rgba(74, 111, 165, 0.04);
+        }
+        .skill-tag.ai:hover {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .contact-section { border-top: 1px solid var(--color-border); }
+        .email-link {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 500;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 4px;
+        }
+        footer {
+            padding: var(--space-lg) 0;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 768px) {
+            :root { --space-xl: 80px; }
+            .edu-item { grid-template-columns: 1fr; gap: var(--space-xs); }
+            .t-date { text-align: left; padding-right: 0; }
+            footer { flex-direction: column; gap: var(--space-sm); }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">WANG XINYU<span class="accent-dot">.</span></div>
+                <div class="nav-links">
+                    <a href="#education">教育</a>
+                    <a href="#practice">实践</a>
+                    <a href="#skills">技能</a>
+                    <a href="#contact">联系</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <h1>王鑫宇<span class="accent-dot">.</span><br>执行与策划</h1>
+            <p>成都银杏酒店管理学院在读。专注于校园活动策划与落地执行，善用AI工具提升内容生产效率。</p>
+        </section>
+
+        <section id="education" class="container">
+            <span class="section-label">教育背景</span>
+            <div class="edu-item">
+                <div class="t-date">2023 — 至今</div>
+                <div class="t-content">
+                    <h3>成都银杏酒店管理学院</h3>
+                    <span class="role">本科在读</span>
+                    <p style="color:var(--color-text-secondary); font-size:0.95rem;">系统学习酒店管理理论与实践知识，培养了对服务流程标准化和项目统筹的深刻理解。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="practice" class="container">
+            <span class="section-label">校园实践</span>
+            <div class="practice-grid">
+                <div class="practice-card">
+                    <h4>校园展会策划</h4>
+                    <p>参与年度校园展会的整体方案构思。协助梳理活动流程、场地动线规划及物料清单整理，确保策划方案的可落地性。</p>
+                </div>
+                <div class="practice-card">
+                    <h4>展会现场执行</h4>
+                    <p>负责展会期间的现场协调与突发状况处理。对接参展方需求，维持现场秩序，保障活动按时间节点顺利推进。</p>
+                </div>
+                <div class="practice-card">
+                    <h4>团队协作与沟通</h4>
+                    <p>作为核心小组成员，跨部门协调志愿者分工。通过高效的信息同步机制，提升了团队在高压环境下的协作效率。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <span class="section-label">专业技能</span>
+            <div class="skills-wrap">
+                <!-- AI 技能（带特殊样式） -->
+                <div class="skill-tag ai">AI 文案生成</div>
+                <div class="skill-tag ai">AI 素材制作</div>
+                <!-- 传统办公技能 -->
+                <div class="skill-tag">Microsoft Word</div>
+                <div class="skill-tag">PowerPoint 演示设计</div>
+                <div class="skill-tag">Excel 数据整理</div>
+                <div class="skill-tag">活动策划书撰写</div>
+                <div class="skill-tag">现场统筹协调</div>
+                <div class="skill-tag">文档排版规范</div>
+            </div>
+        </section>
+
+        <section id="contact" class="container contact-section">
+            <span class="section-label">取得联系</span>
+            <a href="mailto:3242694347@qq.com" class="email-link">3242694347@qq.com</a>
+        </section>
+    </main>
+
+    <footer class="container">
+        <div>© 2026 王鑫宇. All rights reserved.</div>
+        <div>男 · 成都银杏酒店管理学院</div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        });
+    </script>
+</body>
+</html>
